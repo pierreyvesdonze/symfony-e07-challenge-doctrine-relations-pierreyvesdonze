@@ -36,6 +36,11 @@ class Review
      */
     private $updatedAt;
 
+    /**
+     * @ORM\OneToOne(targetEntity="App\Entity\Post")
+     */
+    private $post;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -85,6 +90,26 @@ class Review
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of post
+     */ 
+    public function getPost()
+    {
+        return $this->post;
+    }
+
+    /**
+     * Set the value of post
+     *
+     * @return  self
+     */ 
+    public function setPost($post)
+    {
+        $this->post = $post;
 
         return $this;
     }

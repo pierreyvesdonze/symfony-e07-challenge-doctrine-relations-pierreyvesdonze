@@ -1,0 +1,38 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<h1>Liste des posts</h1>
+
+	{% for post in posts %}
+
+		<h2>{{ post.title }}</h2>
+		<h3>{{ post.nbLikes }}
+			likes</h3>
+
+		<h4>Post :</h4>
+
+		<p>
+			{{ post.body }}
+		</p>
+
+        <img src=" {{ post.image }} " alt="">
+
+
+		<h4>Commentaires :
+		</h4>
+
+		<ul>
+			{% for review in post.reviews %}
+				<li>
+					{{ review.body }}
+					-
+					{{ review.username }}
+
+				</li>
+			{% endfor %}
+		</ul>
+
+		<hr>
+
+	{% endfor %}
+{% endblock %}

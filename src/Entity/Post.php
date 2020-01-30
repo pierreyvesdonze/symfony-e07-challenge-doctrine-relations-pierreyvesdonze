@@ -2,6 +2,7 @@
 
 namespace App\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -45,6 +46,19 @@ class Post
      * @ORM\Column(type="datetime")
      */
     private $updatedAt;
+
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Review", mappedBy="post")
+     */
+    private $reviews;
+
+    public function __construct()
+    {
+        // j'initialise la collection avec une liste vide
+        // au debut un post n'a pas de commentaires/reviews
+        $this->reviews = new ArrayCollection();
+    }
+
 
     public function getId(): ?int
     {
@@ -119,6 +133,26 @@ class Post
     public function setUpdatedAt(\DateTimeInterface $updatedAt): self
     {
         $this->updatedAt = $updatedAt;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of reviews
+     */ 
+    public function getReviews()
+    {
+        return $this->reviews;
+    }
+
+    /**
+     * Set the value of reviews
+     *
+     * @return  self
+     */ 
+    public function setReviews($reviews)
+    {
+        $this->reviews = $reviews;
 
         return $this;
     }
