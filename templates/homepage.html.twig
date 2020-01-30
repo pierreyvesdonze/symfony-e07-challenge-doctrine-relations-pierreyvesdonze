@@ -15,7 +15,13 @@
 			{{ post.body }}
 		</p>
 
-        <img src=" {{ post.image }} " alt="">
+		<img src=" {{ post.image }} " alt=""> <br>
+
+		{% for author in post.authors %}
+			<span>{{ author.firstname }}
+				-
+				{{ author.lastname }}</span>
+		{% endfor %}
 
 
 		<h4>Commentaires :

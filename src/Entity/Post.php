@@ -52,6 +52,11 @@ class Post
      */
     private $reviews;
 
+    /**
+     * @ORM\OneToMany(targetEntity="App\Entity\Author", mappedBy="post"))
+     */
+    private $authors;
+
     public function __construct()
     {
         // j'initialise la collection avec une liste vide
@@ -153,6 +158,26 @@ class Post
     public function setReviews($reviews)
     {
         $this->reviews = $reviews;
+
+        return $this;
+    }
+
+    /**
+     * Get the value of authors
+     */ 
+    public function getAuthors()
+    {
+        return $this->authors;
+    }
+
+    /**
+     * Set the value of authors
+     *
+     * @return  self
+     */ 
+    public function setAuthors($authors)
+    {
+        $this->authors = $authors;
 
         return $this;
     }

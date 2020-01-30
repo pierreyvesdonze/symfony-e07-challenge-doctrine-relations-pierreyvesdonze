@@ -1,0 +1,28 @@
+{% extends "base.html.twig" %}
+
+{% block body %}
+	<h1>Article</h1>
+
+	<h1>
+		{{ post.title }}
+	</h1>
+
+	<p>
+		{{ post.body }}
+	</p>
+	{% for author in post.authors %}
+		<span>{{ author.firstname }} - {{ author.lastname }}</span>
+	{% endfor %}
+
+	<ul>
+		{% for review in post.reviews %}
+			<li>
+				{{ review.body }}
+				-
+				{{ review.username }}
+
+			</li>
+		{% endfor %}
+	</ul>
+
+{% endblock %}
