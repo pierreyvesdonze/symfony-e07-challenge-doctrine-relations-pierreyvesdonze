@@ -17,10 +17,10 @@
 
 		<img src=" {{ post.image }} " alt=""> <br>
 
-		{% for author in post.authors %}
-			<span>{{ author.firstname }}
+		{% for autho in post.author %}
+			<span>{{ autho.firstname }}
 				-
-				{{ author.lastname }}</span>
+				{{ autho.lastname }}</span>
 		{% endfor %}
 
 

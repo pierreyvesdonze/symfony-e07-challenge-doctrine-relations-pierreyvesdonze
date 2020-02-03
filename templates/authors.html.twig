@@ -1,12 +1,12 @@
 {% extends "base.html.twig" %}
 {% block body %}
 	<ul>
-		{% for id, author in authors %}
+		{% for id, autho in author %}
 			<li>
 				<a href="{{ path('posts', { 'id' : id }) }}">
-					{{ author.firstname }}
+					{{ autho.firstname }}
 					-
-					{{ author.lastname }}
+					{{ autho.lastname }}
 				</a>
 			</li>
 		{% endfor %}

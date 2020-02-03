@@ -10,8 +10,8 @@
 	<p>
 		{{ post.body }}
 	</p>
-	{% for author in post.authors %}
-		<span>{{ author.firstname }} - {{ author.lastname }}</span>
+	{% for autho in post.author %}
+		<span>{{ autho.firstname }} - {{ autho.lastname }}</span>
 	{% endfor %}
 
 	<ul>

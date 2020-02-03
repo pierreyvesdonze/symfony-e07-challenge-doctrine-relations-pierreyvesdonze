@@ -32,12 +32,12 @@ class Author
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
     /**
-     * @ORM\OneToOne(targetEntity="App\Entity\Post")
+     * @ORM\OneToMany(targetEntity="App\Entity\Post", mappedBy="author")
      */
     private $post;
 

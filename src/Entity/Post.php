@@ -28,7 +28,7 @@ class Post
     private $body;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(type="string", length=500, nullable=true)
      */
     private $image;
 
@@ -43,7 +43,7 @@ class Post
     private $createdAt;
 
     /**
-     * @ORM\Column(type="datetime")
+     * @ORM\Column(type="datetime", nullable=true)
      */
     private $updatedAt;
 
@@ -53,15 +53,20 @@ class Post
     private $reviews;
 
     /**
-     * @ORM\OneToMany(targetEntity="App\Entity\Author", mappedBy="post"))
+     * @ORM\ManyToOne(targetEntity="App\Entity\Author", inversedBy="post")
      */
-    private $authors;
+    private $author;
 
     public function __construct()
     {
         // j'initialise la collection avec une liste vide
         // au debut un post n'a pas de commentaires/reviews
+        // Par défaut cette relation est en Lasy Loading. On ne chargera les données de la BDD que lorsque l'on les utilisera
         $this->reviews = new ArrayCollection();
+    }
+
+    public function addReview($review) {
+        $this->reviews->add($review);
     }
 
 
@@ -150,34 +155,23 @@ class Post
         return $this->reviews;
     }
 
-    /**
-     * Set the value of reviews
-     *
-     * @return  self
-     */ 
-    public function setReviews($reviews)
-    {
-        $this->reviews = $reviews;
 
-        return $this;
+    /**
+     * Get the value of author
+     */ 
+    public function getAuthor()
+    {
+        return $this->author;
     }
 
     /**
-     * Get the value of authors
-     */ 
-    public function getAuthors()
-    {
-        return $this->authors;
-    }
-
-    /**
-     * Set the value of authors
+     * Set the value of author
      *
      * @return  self
      */ 
-    public function setAuthors($authors)
+    public function setAuthor($author)
     {
-        $this->authors = $authors;
+        $this->author = $author;
 
         return $this;
     }
